@@ -13,16 +13,8 @@ spring:
           uri: lb://USER-SERVICE
           predicates:
             - Path=/users/**
-
-        - id: restaurant-service
-          uri: lb://RESTAURANT-SERVICE
-          predicates:
-            - Path=/restaurants/**
-
-        - id: menu-service
-          uri: lb://MENU-SERVICE
-          predicates:
-            - Path=/menu/**
+          filters:
+            - RewritePath=/users/(?<segment>.*), /${segment}
 
 eureka:
   client:
