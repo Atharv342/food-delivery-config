@@ -5,10 +5,11 @@ spring:
   application:
     name: USER-SERVICE
 
- datasource:
+  datasource:
     url: jdbc:mysql://localhost:3306/user_db?createDatabaseIfNotExist=true
     username: root
     password: Atharv@2003
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
     hibernate:
