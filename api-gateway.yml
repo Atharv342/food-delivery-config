@@ -8,12 +8,12 @@ spring:
   cloud:
     gateway:
       routes:
-
         - id: user-service
           uri: lb://USER-SERVICE
           predicates:
-            - Path=/users,/users/**
-          
+            - Path=/users/**
+          filters:
+            - StripPrefix=1
 
 eureka:
   client:
