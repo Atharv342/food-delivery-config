@@ -11,7 +11,9 @@ spring:
         - id: user-service
           uri: lb://USER-SERVICE
           predicates:
-            - Path=/users/**
+            - Path=/users,/users/**
+          filters:
+            - SetPath=/users/{segment}
 
 eureka:
   client:
