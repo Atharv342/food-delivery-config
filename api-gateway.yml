@@ -11,9 +11,28 @@ spring:
         - id: user-service
           uri: lb://USER-SERVICE
           predicates:
-            - Path=/users
+            - Path=/users/**
 
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
+
+# ✅ Management / Actuator config
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"   # expose all endpoints
+  endpoint:
+    health:
+      show-details: always
+  info:
+    env:
+      enabled: true
+
+info:
+  app:
+    name: "gateway-service"
+    description: "This is API Gateway"
+    version: "1.0"
