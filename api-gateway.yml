@@ -18,7 +18,7 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka
 
-# ✅ Management / Actuator config
+# ✅ Actuator Configuration
 management:
   endpoints:
     web:
@@ -27,10 +27,8 @@ management:
   endpoint:
     health:
       show-details: always
-  info:
-    env:
-      enabled: true
 
+# ✅ Info Endpoint Data
 info:
   app:
     name: "gateway-service"
