@@ -9,30 +9,34 @@ spring:
     gateway:
       routes:
         - id: user-service
-          uri: lb://USER-SERVICE
+          uri: lb://user-service   # ✅ lowercase
           predicates:
-            - Path=/users,/users/**
-          filters:
-            - SetPath=/users/{segment}
+            - Path=/users,/users/**   # ✅ handle both cases
 
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
 
-# ✅ Actuator Configuration
+# ✅ Logging (for debugging)
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    reactor.netty.http.client: DEBUG
+
+# ✅ Actuator
 management:
   endpoints:
     web:
       exposure:
-        include: "*"   # expose all endpoints
+        include: "*"
   endpoint:
     health:
       show-details: always
 
-# ✅ Info Endpoint Data
+# ✅ Info
 info:
   app:
     name: "gateway-service"
-    description: "This is API Gateway"
+    description: "API Gateway for Food Delivery"
     version: "1.0"
